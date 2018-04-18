@@ -1,7 +1,4 @@
-## Сайты:
-- https://db-migrate.readthedocs.io/en/latest/
-- https://github.com/db-migrate/node-db-migrate
-- https://www.npmjs.com/package/db-migrate
+# Миграции базы данных в Node.js
 
 ## Установка
 ```
@@ -34,8 +31,8 @@ npm install db-migrate db-migrate-mysql
 }
 ```
 
-При выполнении команд по умолчанию используется окружение dev либо development.  
-Для mysql добавляем "multipleStatements": true
+При выполнении команд по умолчанию используется окружение `dev` либо `development`.  
+Для mysql добавляем `"multipleStatements": true`
 
 ```json
 {
@@ -100,3 +97,8 @@ node_modules/.bin/db-migrate up <имя файла миграции без ра�
 node_modules/.bin/db-migrate down
 node_modules/.bin/db-migrate reset # откат всех миграций
 ```
+
+## Сайты:
+- https://db-migrate.readthedocs.io/en/latest/
+- https://github.com/db-migrate/node-db-migrate
+- https://www.npmjs.com/package/db-migrate
