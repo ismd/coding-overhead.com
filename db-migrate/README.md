@@ -92,10 +92,15 @@ node_modules/.bin/db-migrate up
 node_modules/.bin/db-migrate up <имя файла миграции без расширения .js>
 ```
 
-## Откат миграции
+## Откат миграций
+Откатить последнюю миграцию
 ```
 node_modules/.bin/db-migrate down
-node_modules/.bin/db-migrate reset # откат всех миграций
+```
+
+Откатить все миграции
+```
+node_modules/.bin/db-migrate reset
 ```
 
 ## Сайты:
