@@ -44,7 +44,7 @@ web: <команда для запуска>
 os.getenv('PORT', 80)
 ```
 
-Пушим изменения в heroku:
+Пушим изменения в Heroku:
 ```
 git push heroku master
 ```
