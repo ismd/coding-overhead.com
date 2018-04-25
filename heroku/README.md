@@ -71,6 +71,8 @@ heroku local web
 ```
 heroku run <команда>
 ```
+#### Просмотр приложений:
+https://dashboard.heroku.com/
 
 ## Документация:
 https://devcenter.heroku.com/
