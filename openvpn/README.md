@@ -139,7 +139,7 @@ DEFAULT_FORWARD_POLICY="ACCEPT"
 COMMIT
 ```
 
-И открываем порт:
+И открываем порт командой:
 
 ```
 ufw allow 1194
