@@ -43,3 +43,4 @@ plugins:
 #   - vendor/ruby/
 
 timezone: Europe/Moscow
+permalink: /:categories/:title
