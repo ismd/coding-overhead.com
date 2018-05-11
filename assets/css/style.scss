@@ -3,8 +3,35 @@
 
 @import "{{ site.theme }}";
 
+* {
+    box-sizing: border-box;
+}
+
 header h1 a {
     color: #b5e853;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(181, 232, 83, 0.1), 0 0 10px rgba(181, 232, 83, 0.1);
     text-decoration: none;
+}
+
+.posts-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .post {
+        flex: 1 1 288px;
+        max-width: 288px;
+        background: #303133;
+        margin: 30px 10px 0;
+        padding: 10px 15px;
+        border-radius: 7px;
+
+        .title {
+            text-align: center;
+        }
+
+        .description {
+            padding-top: 5px;
+        }
+    }
 }

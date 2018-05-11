@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Шифрование устройств в Linux
+description: Шифруем с использованием LUKS
 ---
 
 ## Device mapper
