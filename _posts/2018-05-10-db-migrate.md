@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Миграции базы данных в Node.js
+title: Миграции баз данных в Node.js
 description: Создаём миграции баз данных
 ---
 
