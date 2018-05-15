@@ -6,11 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
+        {% feed_meta %}
         {% seo %}
     </head>
 
     <body>
-
         <header>
             <div class="container">
                 <h1><a href="{{ site.baseurl }}/">{{ site.title | default: site.github.repository_name }}</a></h1>
@@ -30,6 +30,20 @@
                 {{ content }}
             </section>
         </div>
+
+        <footer>
+            <a href="/feed.xml" class="icon" title="RSS" target="_blank">
+                <img src="/assets/images/rss.png">
+            </a>
+
+            <a href="https://github.com/ismd" class="icon" title="GitHub" target="_blank">
+                <img src="/assets/images/github.png">
+            </a>
+
+            <a href="http://screenshotgun.com" class="icon" title="Screenshotgun" target="_blank">
+                <img src="/assets/images/screenshotgun.png">
+            </a>
+        </footer>
 
         {% if site.google_analytics %}
         <script>
