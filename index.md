@@ -8,7 +8,7 @@ layout: default
         <div class="title">{{ post.title }}</div>
 
         <div class="description">
-            {{ post.description }}
+            {{ post.excerpt }}
         </div>
     </a>
     {% endfor %}
