@@ -45,9 +45,14 @@
             </a>
         </footer>
 
-        {% if site.google_analytics %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58221606-4"></script>
         <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-58221606-4');
         </script>
-        {% endif %}
     </body>
 </html>
