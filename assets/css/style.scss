@@ -60,13 +60,13 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: -30px;
+    margin: -30px -20px 0;
 
     .post {
-        flex: 1 1 280px;
-        max-width: 280px;
+        flex: 1 1 288px;
+        max-width: 288px;
         background: #202020;
-        margin: 30px 10px 0;
+        margin: 30px 20px 0;
         padding: 12px 15px;
         border-radius: 7px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, .7);
@@ -89,13 +89,14 @@ footer {
             color: #aaaaaa;
         }
 
-        @media (max-width: 999px) {
-            max-width: 45%;
+        @media (max-width: 1063px) {
+            width: 40%;
+            max-width: none;
+            flex-basis: auto;
         }
 
         @media (max-width: 666px) {
             width: 100%;
-            max-width: none;
             text-align: center;
         }
     }
