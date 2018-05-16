@@ -6,7 +6,7 @@ excerpt: Создаём миграции баз данных
 
 ## Установка
 ```
-npm install db-migrate db-migrate-mysql
+$ npm install db-migrate db-migrate-mysql
 ```
 
 ## Конфиг database.json
@@ -51,21 +51,22 @@ npm install db-migrate db-migrate-mysql
 
 ## Запуск
 ```
-node_modules/.bin/db-migrate
+$ node_modules/.bin/db-migrate
 ```
 
 ## Создание базы
 ```
-node_modules/.bin/db-migrate db:create <имя базы>
+$ node_modules/.bin/db-migrate db:create <имя базы>
 ```
 
 ## Удаление базы
 ```
-node_modules/.bin/db-migrate db:drop <имя базы>
+$ node_modules/.bin/db-migrate db:drop <имя базы>
 ```
 
 ## Создание миграции
 Добавляем `database` в `database.json`
+
 ```json
 {
   "dev": {
@@ -77,40 +78,40 @@ node_modules/.bin/db-migrate db:drop <имя базы>
 ```
 
 ```
-node_modules/.bin/db-migrate create <имя миграции>
+$ node_modules/.bin/db-migrate create <имя миграции>
 ```
 
 Миграции по умолчанию создаются в директории `migrations`
 
 ## Создание миграции в формате SQL
 ```
-node_modules/.bin/db-migrate create <имя миграции> --sql-file
+$ node_modules/.bin/db-migrate create <имя миграции> --sql-file
 ```
 
 ## Выполнение миграций
 После создания миграции необходимо определить `up` и `down` действия для применения и отката миграции соответственно. Для этого редактируем соответствующие файлы в `migrations`, а затем выполняем:
 
 ```
-node_modules/.bin/db-migrate up
+$ node_modules/.bin/db-migrate up
 ```
 
 либо для применения конкретной миграции:
 
 ```
-node_modules/.bin/db-migrate up <имя файла миграции без расширения .js>
+$ node_modules/.bin/db-migrate up <имя файла миграции без расширения .js>
 ```
 
 ## Откат миграций
 Откатить последнюю миграцию
 
 ```
-node_modules/.bin/db-migrate down
+$ node_modules/.bin/db-migrate down
 ```
 
 Откатить все миграции
 
 ```
-node_modules/.bin/db-migrate reset
+$ node_modules/.bin/db-migrate reset
 ```
 
 ## Сайты:

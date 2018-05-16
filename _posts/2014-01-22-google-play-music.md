@@ -44,9 +44,9 @@ artists///
 Установить GMusicFS можно при помощи pip, предварительно установив зависимости:
 
 ```
-pip install https://github.com/terencehonles/fusepy/tarball/master
-pip install https://github.com/simon-weber/Unofficial-Google-Music-API/tarball/develop
-pip install https://github.com/EnigmaCurry/GMusicFS/tarball/master
+$ pip install https://github.com/terencehonles/fusepy/tarball/master
+$ pip install https://github.com/simon-weber/Unofficial-Google-Music-API/tarball/develop
+$ pip install https://github.com/EnigmaCurry/GMusicFS/tarball/master
 ```
 
 Затем необходимо создать конфигурационный файл ~/.gmusicfs со следующим содержимым:
@@ -60,14 +60,14 @@ password = your_password
 И можно монтировать:
 
 ```
-mkdir -p $HOME/google_music
-gmusicfs $HOME/google_music
+$ mkdir -p $HOME/google_music
+$ gmusicfs $HOME/google_music
 ```
 
 Для размонтирования:
 
 ```
-fusermount -u $HOME/google_music
+$ fusermount -u $HOME/google_music
 ```
 
 При копировании музыки себе на компьютер все тэги корректно загружаются. Воспроизведение с помощью mplayer также работает отлично. После обновления фонотеки необходимо перемонтировать файловую систему.
@@ -78,13 +78,13 @@ fusermount -u $HOME/google_music
 Установить можно следующей командой:
 
 ```
-pip install https://github.com/diraimondo/gmusicproxy/tarball/master
+$ pip install https://github.com/diraimondo/gmusicproxy/tarball/master
 ```
 
 Для работы необходим device-id одного из зарегистрированных устройств. Получить список этих устройств можно следующим образом:
 
 ```
-GMusicProxy --email <адрес> --password <пароль> --list-devices
+$ GMusicProxy --email <адрес> --password <пароль> --list-devices
 ```
 
 Создаём конфиг ~/.config/gmusicproxy.cfg:
@@ -98,7 +98,7 @@ device-id = your_device_id
 Запускаем:
 
 ```
-GMusicProxy
+$ GMusicProxy
 ```
 
 <details>
@@ -130,7 +130,7 @@ Mopidy представляет из себя музыкальный серве�
 Установить Mopidy можно с помощью пакетного менеджера, а расширение следующей командой:
 
 ```
-pip install mopidy-gmusic
+$ pip install mopidy-gmusic
 ```
 
 Для работы понадобится опять же device-id, который можно получить либо набрав \*#\*#8255#\*#\*, либо установив [приложение][11]{:target="_blank"}.
