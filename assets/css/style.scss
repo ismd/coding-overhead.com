@@ -88,7 +88,11 @@ footer {
             color: #aaaaaa;
         }
 
-        @media (max-width: 684px) {
+        @media (max-width: 999px) {
+            max-width: 45%;
+        }
+
+        @media (max-width: 666px) {
             width: 100%;
             max-width: none;
             text-align: center;
