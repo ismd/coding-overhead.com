@@ -163,7 +163,7 @@ deviceid = 0123456789abcdef
  [6]: #play-pi
  [7]: #mopidy
  [8]: https://github.com/mstill/thunner/issues/14
- [9]: https://habrastorage.org/getpro/habr/post_images/e5b/58c/f96/e5b58cf96b6e18f6030eebbbf0a7f587.png
+ [9]: /images/google-play-music/thunner.png
  [10]: https://github.com/hechtus/mopidy-gmusic
  [11]: https://play.google.com/store/apps/details?id=com.evozi.deviceid
  [12]: http://docs.mopidy.com/en/latest/
