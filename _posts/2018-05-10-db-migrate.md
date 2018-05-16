@@ -36,7 +36,7 @@ $ npm install db-migrate db-migrate-mysql
 }
 ```
 
-При выполнении команд по умолчанию используется окружение `dev` либо `development`.  
+При выполнении команд по умолчанию используется окружение `dev` либо `development`.
 Для mysql добавляем `"multipleStatements": true`
 
 ```json

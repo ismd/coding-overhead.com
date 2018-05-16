@@ -6,7 +6,7 @@ excerpt: Разворачиваем WordPress на LAMP
 
 В этой статье я опишу установку WordPress CMS на Ubuntu 16.04. Использовать буду связку LAMP (linux, apache, mysql, php).
 
-Для начала нам необходимо установить нужные пакеты: 
+Для начала нам необходимо установить нужные пакеты:
 
 ```
 $ sudo apt-get install apache2 mysql-server php curl libapache2-mod-php php-mcrypt php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc
@@ -16,7 +16,7 @@ $ sudo apt-get install apache2 mysql-server php curl libapache2-mod-php php-mcry
 
 ```
 $ sudo mkdir /var/www/<имя сайта>
-``` 
+```
 
 ### 1. Apache
 Чтобы избежать предупреждения при запуске apache нужно добавить одну строчку в файл `/etc/apache2/apache2.conf`
@@ -102,7 +102,7 @@ FLUSH PRIVILEGES;
 ```
 
 ### 3. PHP
-Как минимум желательно повысить приоритет обработки веб-сервером php-файлов. Для этого `index.php` поставить на первое место: 
+Как минимум желательно повысить приоритет обработки веб-сервером php-файлов. Для этого `index.php` поставить на первое место:
 
 ```
 $ sudo nano /etc/apache2/mods-enabled/dir.conf
@@ -118,10 +118,10 @@ $ touch wordpress/.htaccess
 $ chmod 660 wordpress/.htaccess
 $ cp wordpress/wp-config-sample.php wordpress/wp-config.php
 $ mkdir wordpress/wp-content/upgrade
-``` 
+```
 
 ### 5. Настройка WordPress
-Установим права доступа 
+Установим права доступа
 
 ```
 $ sudo chown -R <пользователь>:www-data /var/www/<имя сайта>
