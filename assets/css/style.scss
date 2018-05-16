@@ -58,13 +58,13 @@ footer {
 
 .posts-list {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-top: -30px;
 
     .post {
-        flex: 1 1 288px;
-        max-width: 288px;
+        flex: 1 1 280px;
+        max-width: 280px;
         background: #202020;
         margin: 30px 10px 0;
         padding: 12px 15px;
