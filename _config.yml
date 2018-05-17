@@ -40,4 +40,4 @@ plugins:
 #   - vendor/ruby/
 
 timezone: Europe/Moscow
-permalink: /:title
+permalink: /post/:title
