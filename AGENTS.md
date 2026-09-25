@@ -110,7 +110,7 @@ draft: false
 - Sidebar logo: minimum 440x440px
 
 ### Categories and Tags
-- Categories used for major topic groupings (e.g., "Настройка окружения Hyprland от начала до конца")
+- Categories used for major topic groupings (e.g., "Hyprland Setup from Scratch", "Security")
 - Tags for specific technologies (linux, hyprland, etc.)
 
 ## Theme Customization

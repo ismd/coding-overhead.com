@@ -1,15 +1,15 @@
 ---
-title: О блоге
+title: About
 date: 2025-01-08
 layout: about
 params:
-  headline: Привет!
+  headline: "Hello, fellow geek."
   email: coding-overhead@ismd.dev
-  info: "<p>Этот блог не&nbsp;обо мне, но&nbsp;всё&nbsp;же меня зовут Владимир. У&nbsp;меня более 17&nbsp;лет опыта в&nbsp;разработке, из&nbsp;которых последние 5+&nbsp;лет строю облачную инфраструктуру в&nbsp;Yandex Cloud и&nbsp;руковожу командой. Начинал с&nbsp;frontend-разработки, затем увлёкся DevOps&rsquo;ом и&nbsp;ушёл в&nbsp;Platform Engineering с&nbsp;фокусом на&nbsp;cloud security.</p>
-<p>Сертифицированный администратор Kubernetes (CKA). На&nbsp;домашней машине&nbsp;&mdash; Arch Linux и&nbsp;Emacs.</p>
-<p>Сфера информационных технологий всегда привлекала и&nbsp;продолжает привлекать меня. Но&nbsp;кроме неё также есть и&nbsp;другие увлечения, которые можете увидеть рядом.</p>"
+  info: "<p>This blog isn&rsquo;t about&nbsp;me, but my&nbsp;name is&nbsp;Vladimir anyway. I&nbsp;have over 17&nbsp;years of&nbsp;experience in&nbsp;software development, and for the last 5+&nbsp;years I&rsquo;ve been building cloud infrastructure and leading a&nbsp;team. I&nbsp;started out in&nbsp;development, then got into DevOps and moved on&nbsp;to&nbsp;Platform Engineering with a&nbsp;focus on&nbsp;cloud security.</p>
+<p>Certified Kubernetes Administrator (CKA). On&nbsp;my&nbsp;home machine: Arch Linux and Emacs.</p>
+<p>IT&nbsp;has always fascinated&nbsp;me, and it&nbsp;still does. But I&nbsp;have other interests too, which you can see alongside.</p>"
   tabs:
-    - title: Инструменты
+    - title: Tools
       items:
         - Kubernetes
         - Docker
@@ -18,34 +18,36 @@ params:
         - Prometheus
         - Grafana
         - Emacs
-    - title: Языки
+    - title: Languages
       items:
+        - Go
         - Python
         - TypeScript/JavaScript
-        - Go
         - Dart/Flutter
         - Bash
-    - title: Окружения
+    - title: Environments
       items:
         - GNU/Linux
         - Hyprland
   skills:
     - title: GNU/Linux
       level: 100
-    - title: Программирование
+    - title: Programming
       level: 100
-    - title: Облака / Kubernetes
+    - title: Cloud / Kubernetes
       level: 100
-    - title: Футбол
+    - title: Football
       level: 80
-    - title: Музыка / бас-гитара
+    - title: Music / bass guitar
       level: 70
-    - title: Решение CTF
+    - title: CTF challenges
       level: 70
-    - title: Путешествия
+    - title: Travel
       level: 70
 ---
 
-Coding Overhead&nbsp;&mdash; это мой личный блог о&nbsp;GNU/Linux, DevOps, Platform Engineering, программировании, полезных утилитах и&nbsp;многом другом из&nbsp;мира IT. Я&nbsp;пишу о&nbsp;том, что интересно мне, и&nbsp;надеюсь, что это будет интересно и&nbsp;вам. Часть материалов оформлена в&nbsp;виде заметок и&nbsp;шпаргалок, но&nbsp;встречаются и&nbsp;полноценные статьи с&nbsp;детальным разбором.
+If&nbsp;you&rsquo;re here, it&rsquo;s no&nbsp;accident. You&rsquo;re into tech, and you&rsquo;ll find plenty to&nbsp;dig into.
 
-Блог создан, чтобы делиться знаниями, которые могут пригодиться другим. Здесь вы&nbsp;найдёте материалы про Linux-дистрибутивы, Hyprland, Docker, Kubernetes и&nbsp;не&nbsp;только. Буду рад, если что-то из&nbsp;написанного окажется вам полезным.
+Coding Overhead is&nbsp;my&nbsp;personal blog about GNU/Linux, DevOps, Platform Engineering, programming, useful tools, and much more from the world of&nbsp;IT. I&nbsp;write about what interests me&nbsp;and hope you&rsquo;ll find it&nbsp;interesting too. Some posts are short notes and cheat sheets, while others are full-length articles with detailed breakdowns.
+
+I&nbsp;started this blog to&nbsp;share knowledge that others might find useful. Here you&rsquo;ll find posts about Linux distributions, Hyprland, Emacs, Docker, Kubernetes, and more. I&nbsp;hope some of&nbsp;it&nbsp;comes in&nbsp;handy.

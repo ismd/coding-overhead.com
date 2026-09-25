@@ -2,7 +2,7 @@
 title: "[RU] Порядок байтов: Big-endian и Little-endian"
 summary: "Как компьютер хранит многобайтовые числа в памяти и почему это важно"
 categories:
-  - Основы IT
+  - IT Fundamentals
 tags:
   - basics
 date: 2025-11-09T12:00:00+03:00

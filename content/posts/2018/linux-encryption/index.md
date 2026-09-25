@@ -2,7 +2,7 @@
 title: "[RU] Шифрование устройств в Linux"
 summary: "Шифруем с использованием LUKS"
 categories:
-  - Общая информация о Linux
+  - Linux Fundamentals
 tags:
   - linux
   - crypt

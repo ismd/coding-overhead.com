@@ -2,7 +2,7 @@
 title: "[RU] Тема оформления Hyprland (часть 2)"
 summary: FIXME Первая статья из серии статей про конфигурацию Hyprland. В ней я расскажу как настроил тему оформления, а именно внешний вид окон и виджетов, курсор и иконки
 categories:
-  - Настройка окружения Hyprland от начала до конца
+  - Hyprland Setup from Scratch
 tags:
   - linux
   - hyprland

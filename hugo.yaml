@@ -11,23 +11,24 @@ module:
 
 menus:
   main:
-    - name: Главная
+    - name: Home
       pageRef: /
       weight: 10
-    - name: Посты
+    - name: Posts
       pageRef: /posts
       weight: 20
-    - name: Категории
+    - name: Categories
       pageRef: /categories
       weight: 30
-    - name: Теги
+    - name: Tags
       pageRef: /tags
       weight: 40
-    - name: О блоге
+    - name: About
       pageRef: /about
       weight: 50
 
 params:
+  author: ismd
   social:
     discord: "https://discord.gg/JTjbUVuNy"
     facebook:
@@ -87,9 +88,9 @@ params:
 
 
   homeEventPosition: "none"
-  homeToBlogText: "К&nbsp;блогу"
-  description: "Привет, друг! Coding Overhead — это мой личный блог о&nbsp;современных технологиях и&nbsp;полезных утилитах."
-  mailMeText: "Написать&nbsp;мне"
+  homeToBlogText: "Blog"
+  description: "Hello, friend. Coding Overhead is&nbsp;my&nbsp;personal blog about modern tech and useful tools."
+  mailMeText: "Email&nbsp;me"
 
 markup:
   goldmark:

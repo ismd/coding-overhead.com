@@ -2,7 +2,7 @@
 title: "[RU] Rate Limiter"
 summary: "Реализуем простой rate limiter, тренируемся с Go"
 categories:
-- Программирование
+- Programming
 tags:
 - go
 date: 2026-05-26T10:18:38+03:00

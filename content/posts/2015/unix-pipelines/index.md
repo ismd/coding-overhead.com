@@ -2,7 +2,7 @@
 title: "[RU] Перенаправления Unix pipelines"
 summary: "Немного о конвейерах в Unix"
 categories:
-  - Общая информация о Linux
+  - Linux Fundamentals
 tags:
   - linux
   - shell

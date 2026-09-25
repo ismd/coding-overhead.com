@@ -2,7 +2,7 @@
 title: "[RU] nohup — процессы, которые не умирают"
 summary: "Как запустить процесс, который продолжит работу после закрытия терминала"
 categories:
-  - Общая информация о Linux
+  - Linux Fundamentals
 tags:
   - linux
   - shell

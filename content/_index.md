@@ -1,13 +1,13 @@
 ---
-title: Главная страница
+title: Home
 date: 2023-01-01T08:00:00-07:00
 draft: false
-nextEventHeading: "Следующий стрим"
-nextEventDate: "9 марта 2026"
+nextEventHeading: "Next stream"
+nextEventDate: "March 9, 2026"
 nextEventTime: "17 : 00 MSK"
-nextEventTitle: "Готовимся к сдаче CKA на Killercoda"
-nextEventLink: "https://www.youtube.com/watch?v=qXgIsD41IQs"
+nextEventTitle: ""
+nextEventLink: ""
 nextEventIcon: "icons/home-youtube.svg"
 ---
 
-Блог о&nbsp;современных технологиях и&nbsp;полезных утилитах
+Blog about modern tech and useful tools
