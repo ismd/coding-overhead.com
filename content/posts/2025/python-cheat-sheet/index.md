@@ -1,8 +1,8 @@
 ---
 title: Python Cheat Sheet
-summary: Шпаргалка по Python, охватывающая основные темы.
+summary: "Quick reference for core Python: data types, loops, functions, classes, exceptions, and more"
 categories:
-- Программирование
+- Programming
 tags:
   - python
 date: 2025-08-21T10:28:49+02:00

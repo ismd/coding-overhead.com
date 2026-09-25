@@ -1,6 +1,6 @@
 ---
-title: "Шифрование устройств в Linux"
-summary: "Шифруем с использованием LUKS."
+title: "[RU] Шифрование устройств в Linux"
+summary: "Шифруем с использованием LUKS"
 categories:
   - Общая информация о Linux
 tags:

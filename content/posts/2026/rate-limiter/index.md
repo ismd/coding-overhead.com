@@ -1,5 +1,5 @@
 ---
-title: "Rate Limiter"
+title: "[RU] Rate Limiter"
 summary: "Реализуем простой rate limiter, тренируемся с Go"
 categories:
 - Программирование

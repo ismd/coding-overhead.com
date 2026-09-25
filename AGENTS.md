@@ -40,9 +40,6 @@ The site is configured to deploy to AWS S3 (s3://coding-overhead.com) as specifi
 ```bash
 # Create new post
 hugo new posts/YYYY/[post-name]/index.md
-
-# Create new post with Org mode (alternative format used in this blog)
-hugo new posts/YYYY/[post-name]/index.org
 ```
 
 ## Site Architecture
@@ -58,10 +55,9 @@ hugo new posts/YYYY/[post-name]/index.org
 - **Pages**: Static pages like About in `content/about.md`
 - **Assets**: Images and media files in `assets/` and `static/`
 
-### Supported Content Formats
-- **Markdown**: Standard `.md` files with Hugo front matter
-- **Org Mode**: `.org` files (Emacs Org mode format) - used for some posts
-- Mixed format support allows flexible content creation
+### Content Format
+- All content is Markdown: `.md` files with YAML front matter
+- Org mode (`.org`) is not used; Hugo 0.166+ blocks it by default
 
 ### Configuration
 - Main config: `hugo.yaml` (YAML format)
@@ -97,12 +93,15 @@ draft: false
 ---
 ```
 
-Org mode posts (.org files) use the same YAML front matter format at the beginning of the file.
-
 ### Post Language
 - New posts are written in English
-- Posts in Russian stay in the same `content/posts/` tree with regular file names (`index.md` / `index.org`)
+- Posts in Russian stay in the same `content/posts/` tree with regular file names (`index.md`)
 - Prefix the title of every Russian post with `[RU]`, e.g. `title: "[RU] Шифрование устройств в Linux"`
+
+### Summary Style
+- Write `summary` in headline style, without a trailing period (in any language)
+- In English summaries, also omit the leading article (`A`/`An`/`The`)
+- Say what the post covers instead of repeating the title, e.g. `summary: "Quick reference for core Python: data types, loops, functions, classes, exceptions, and more"`
 
 ### Image Handling
 - Place images in post directories alongside content
@@ -141,10 +140,3 @@ git submodule update --remote themes/vng-blue
 # Initialize submodules (if cloning fresh repo)
 git submodule update --init --recursive
 ```
-
-## Org Mode Support
-
-- Org mode files (.org) are supported alongside Markdown
-- Use Emacs Org mode syntax for content structure
-- Internal links use `[[denote:ID][description]]` format
-- Code blocks use `#+begin_src` and `#+end_src`
