@@ -45,7 +45,7 @@ hugo new posts/YYYY/[post-name]/index.md
 ## Site Architecture
 
 ### Theme Structure
-- Uses custom theme `vng-blue` located in `themes/vng-blue/`
+- Uses custom theme `vng-blue` (`github.com/ismd/hugo-theme-vng-blue`), imported as a Hugo module via `module.imports` in `hugo.yaml`
 - Theme supports responsive design with configurable home page layouts
 - Includes social media integration and custom styling
 
@@ -125,18 +125,21 @@ The vng-blue theme can be customized through:
 
 - Generated files in `public/` directory (ignored in git)
 - Resources cache in `resources/_gen/` (can be cleared if needed)
-- Theme is included as git submodule at `themes/vng-blue/`
+- Theme is a Hugo module, not a git submodule; its version is pinned in `go.mod` / `go.sum`
 - No package.json or Node.js dependencies - pure Hugo project
 - Site content is in English; some posts are in Russian (marked with `[RU]` in the title)
 - Yandex.Metrika analytics configured in hugo.yaml
 
-## Git Submodule Management
+## Theme Module Management
 
-The theme is managed as a git submodule:
+The theme is managed as a Hugo module. Hugo modules require Go; the theme requires Hugo extended 0.158.0+.
 ```bash
-# Update theme submodule
-git submodule update --remote themes/vng-blue
+# Update theme to the latest version
+hugo mod get -u github.com/ismd/hugo-theme-vng-blue
 
-# Initialize submodules (if cloning fresh repo)
-git submodule update --init --recursive
+# Remove unused entries from go.mod / go.sum
+hugo mod tidy
+
+# Show the theme version currently in use
+hugo mod graph
 ```
