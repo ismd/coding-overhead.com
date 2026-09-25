@@ -7,7 +7,8 @@ params:
   email: coding-overhead@ismd.dev
   info: "<p>This blog isn&rsquo;t about&nbsp;me, but my&nbsp;name is&nbsp;Vladimir anyway. I&nbsp;have over 17&nbsp;years of&nbsp;experience in&nbsp;software development, and for the last 5+&nbsp;years I&rsquo;ve been building cloud infrastructure and leading a&nbsp;team. I&nbsp;started out in&nbsp;development, then got into DevOps and moved on&nbsp;to&nbsp;Platform Engineering with a&nbsp;focus on&nbsp;cloud security.</p>
 <p>Certified Kubernetes Administrator (CKA). On&nbsp;my&nbsp;home machine: Arch Linux and Emacs.</p>
-<p>IT&nbsp;has always fascinated&nbsp;me, and it&nbsp;still does. But I&nbsp;have other interests too, which you can see alongside.</p>"
+<p>IT&nbsp;has always fascinated&nbsp;me, and it&nbsp;still does. But I&nbsp;have other interests too, which you can see alongside.</p>
+<p>More about me&nbsp;at&nbsp;<a href=\"https://ismd.dev\" target=\"_blank\" rel=\"noopener noreferrer\">ismd.dev</a>.</p>"
   tabs:
     - title: Tools
       items:
