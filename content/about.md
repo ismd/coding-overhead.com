@@ -15,9 +15,8 @@ params:
         - Docker
         - Helm
         - Terraform
-        - Prometheus
-        - Grafana
         - Emacs
+        - Git
     - title: Languages
       items:
         - Go
@@ -27,8 +26,11 @@ params:
         - Bash
     - title: Environments
       items:
-        - GNU/Linux
+        - Arch Linux
         - Hyprland
+        - Wayland
+        - fish
+        - kitty
   skills:
     - title: GNU/Linux
       level: 100
