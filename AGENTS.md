@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-This is a Hugo static site generator project for a Russian-language technology blog called "Coding Overhead" (coding-overhead.com). The site covers topics related to GNU/Linux, DevOps, Platform Engineering, programming, and useful utilities.
+This is a Hugo static site generator project for a technology blog called "Coding Overhead" (coding-overhead.com). The site covers topics related to GNU/Linux, DevOps, Platform Engineering, programming, and useful utilities.
+
+The blog is written in English. Some posts are in Russian; their titles are prefixed with `[RU]`.
 
 ## Key Commands
 
@@ -37,10 +39,10 @@ The site is configured to deploy to AWS S3 (s3://coding-overhead.com) as specifi
 ### Content Management
 ```bash
 # Create new post
-hugo new posts/[post-name]/index.md
+hugo new posts/YYYY/[post-name]/index.md
 
 # Create new post with Org mode (alternative format used in this blog)
-hugo new posts/[post-name]/index.org
+hugo new posts/YYYY/[post-name]/index.org
 ```
 
 ## Site Architecture
@@ -52,7 +54,7 @@ hugo new posts/[post-name]/index.org
 
 ### Content Organization
 - **Content**: All content in `content/` directory
-- **Posts**: Blog posts in `content/posts/` with subdirectories per post
+- **Posts**: Blog posts in `content/posts/YYYY/` with subdirectories per post
 - **Pages**: Static pages like About in `content/about.md`
 - **Assets**: Images and media files in `assets/` and `static/`
 
@@ -67,7 +69,7 @@ hugo new posts/[post-name]/index.org
   - Social media links (GitHub, LinkedIn, YouTube, Twitch)
   - Custom analytics (Yandex.Metrika)
   - Home page event positioning
-  - Multilingual support (Russian)
+  - Site language: English (single-language site, no Hugo multilingual mode)
 
 ### Key Features
 - **Categories and Tags**: Organized content taxonomy
@@ -97,6 +99,11 @@ draft: false
 
 Org mode posts (.org files) use the same YAML front matter format at the beginning of the file.
 
+### Post Language
+- New posts are written in English
+- Posts in Russian stay in the same `content/posts/` tree with regular file names (`index.md` / `index.org`)
+- Prefix the title of every Russian post with `[RU]`, e.g. `title: "[RU] Шифрование устройств в Linux"`
+
 ### Image Handling
 - Place images in post directories alongside content
 - Theme supports HiDPI displays - provide double resolution images
@@ -106,7 +113,6 @@ Org mode posts (.org files) use the same YAML front matter format at the beginni
 ### Categories and Tags
 - Categories used for major topic groupings (e.g., "Настройка окружения Hyprland от начала до конца")
 - Tags for specific technologies (linux, hyprland, etc.)
-- All content in Russian language
 
 ## Theme Customization
 
@@ -122,7 +128,7 @@ The vng-blue theme can be customized through:
 - Resources cache in `resources/_gen/` (can be cleared if needed)
 - Theme is included as git submodule at `themes/vng-blue/`
 - No package.json or Node.js dependencies - pure Hugo project
-- Site uses Russian language and content
+- Site content is in English; some posts are in Russian (marked with `[RU]` in the title)
 - Yandex.Metrika analytics configured in hugo.yaml
 
 ## Git Submodule Management
