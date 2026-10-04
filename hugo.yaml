@@ -64,7 +64,7 @@ params:
             data-repo-id="R_kgDOM8wE5g"
             data-category="Announcements"
             data-category-id="DIC_kwDOM8wE5s4Cu5WQ"
-            data-mapping="title"
+            data-mapping="pathname"
             data-strict="0"
             data-reactions-enabled="1"
             data-emit-metadata="0"
