@@ -2,9 +2,12 @@
 title: "Adding DNS Records on Keenetic Routers"
 summary: "Custom DNS records on Keenetic without a separate DNS server"
 date: 2026-10-20T10:00:00+02:00
+categories:
+  - Networking
 tags:
-  - linux
-  - shell
+  - keenetic
+  - dns
+  - networking
 draft: false
 ---
 

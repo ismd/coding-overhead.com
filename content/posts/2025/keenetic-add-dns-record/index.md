@@ -2,9 +2,12 @@
 title: "[RU] Добавление DNS-записей в роутерах Keenetic"
 summary: "Добавляем DNS-записи в Keenetic без отдельного сервера"
 date: 2025-07-31T18:01:09+02:00
+categories:
+  - Networking
 tags:
-  - linux
-  - shell
+  - keenetic
+  - dns
+  - networking
 draft: false
 ---
 
