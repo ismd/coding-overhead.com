@@ -2,7 +2,7 @@
 title: "Моё окружение для CTF: BlackArch в Docker"
 summary: "Running HTB, THM, and CTF tools in a container, keeping task files on the host, and dealing with file ownership"
 date: 2026-10-25T11:51:33+02:00
-draft: true
+draft: false
 tags:
 - linux
 - security
