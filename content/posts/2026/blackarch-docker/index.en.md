@@ -1,6 +1,6 @@
 ---
 title: "My CTF setup: BlackArch in Docker"
-summary: "Running HTB, THM, and CTF tools in a container, keeping task files on the host, and dealing with file ownership"
+summary: "Running HTB, THM, and CTF tools in a container and keeping task files on the host"
 date: 2026-10-25T11:51:33+02:00
 draft: false
 tags:
