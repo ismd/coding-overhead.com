@@ -13,41 +13,34 @@ categories:
 - Security
 ---
 
-Solving CTF challenges and machines on Hack The Box and TryHackMe is one of my hobbies. A typical session involves connecting to the platform's VPN and reaching for whatever tools the task requires. The annoying part was having to stop and install another utility on my laptop before I could continue.
+Я давний любитель участия в CTF-соревнованиях и решения машин с Hack The Box и TryHackMe, а поэтому на моей системе должно быть установлено большое количество утилит, необходимых для решения всех этих задачек. Засорять систему кучей вспомогательных программ и одноразовых скриптов, которым, кстати, ещё и не всегда можно доверять, мне не хотелось, поэтому ниже рассказываю, как я решил эту проблему.
 
-I wanted the tools ready without turning my everyday system into a pentesting distribution. My solution was to put the utilities I use into a BlackArch Docker image and work from a shell inside the container. The image grew out of that workflow: a collection of tools and settings I wanted available when sitting down to solve a box.
+# Как я пришёл к использованию контейнера
 
-## Why I ended up using a container
+Очевидным и самым простым решением было использование основной операционной системы. Но этот подход мне не нравился с самого первого дня, когда я заинтересовался CTF, ведь ты не всегда можешь полностью проверить скрипты эксплоитов, скаченные из интернета. С точки зрения безопасности это никуда не годится.
 
-Installing everything directly on my laptop was the obvious starting point. But different challenges need different tools, and I did not want to keep adding packages and their dependencies to my main system.
+Поэтому изначально я использовал дополнительную операционную систему, запускаемую в виртуальной машине. В разное время использовал различные дистрибутивы: Kali Linux, Parrot OS, BlackArch. Это был рабочий вариант: есть все базовые необходимые утилиты, можно установить дополнительные, виртуальная машина — это изолированная среда, да и файлы тоже можно пробрасывать с основной системы путём монтирования директории из основной системы в гостевую. Этот подход я использовал много лет, но у него было много недостатков, с которыми приходилось всегда мириться. В целом можно выделить следующие плюс и минусы:
 
-There is also the code that comes with a challenge: custom scripts, proof-of-concept exploits, and other snippets downloaded from the internet. Running unfamiliar code directly on the laptop I use every day is another risk I wanted to reduce. Keeping it in a container gives it less direct access to my everyday environment.
+| Плюсы                                                                                                                                                              | Минусы                                                                                                                                                                                                                                                                                    |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Система запускается в изолированном окружении без доступа к основной файловой системе, что отлично в ситуации, связанной с безопасностью.                          | Вместо одной основной системы необходимо настраивать и обновлять ещё и гостевую. Согласен, что в идеале этим не стоит заморачиваться, но тем не менее, когда привыкаешь к определённым комбинациям клавиш и определённым утилитам, то хочется использовать их же в виртуальном окружении. |
+| Образ виртуальной машины можно перенести на другой компьютер и продолжить использовать без каких-либо проблем. Этим приходилось пользоваться как минимум пару раз. | Производительность гостевой системы ниже основной, поэтому необходимо тратить время на оптимизации и настройки.                                                                                                                                                                           |
+| Удобный доступ к файлам из основной системы. Можно монтировать определённые директории даже в read-only режиме.                                                    | Гостевая система с большим количеством утилит со временем начинает занимать очень много места, по сути она превращается в помойку. Благо это не основная система, но тем не менее об этом приходится думать и находить компромиссы.                                                       |
+| Перед запуском непроверенного эксплоита или экспериментами с настройками можно сохранить состояние системы и при необходимости вернуться к нему за пару секунд.    | Виртуальная машина требует времени на запуск. Неприятно, но всё же с этим можно смириться.                                                                                                                                                                                                |
 
-That isolation has limits. Containers share the host's kernel, and [Docker's security documentation](https://docs.docker.com/engine/security/) describes the risks of incomplete isolation. Code inside the container can still access the directories I mount into it, including modifying files in writable mounts. A container is an extra boundary, not a guarantee that an unknown script is safe.
+Таким был мой подход к решению CTF долгое время. А после этого я решил установить вторую основную систему и переключаться между ними. Это требовало перезагрузки компьютера, но всё-таки работать в полноценной среде приятнее чем в виртуальной. Живя на две системы быстро понял, что такой вариант мне не подходит, потому что сопутствуют практически все минусы виртуальной машины, а ещё и добавляется постоянная перезагрузка. Поэтому быстро пришёл к текущей конфигурации, а именно к Docker контейнеру.
 
-A separate installation of Kali Linux or Parrot OS would mean leaving my usual environment and rebooting. A virtual machine avoids that, but it is still another full system to update and configure. For these sessions, I wanted less setup and no guest OS to boot before opening a terminal.
+# Подробнее про Docker образ
 
-A container fits the way I work. Once the image is available locally, I can start a shell with the tools already installed and keep using my laptop around it. This does not eliminate maintenance: packages still need updates, and the image needs rebuilding. It moves that setup into a Dockerfile I can reuse.
+Конечно, для начала я решил изучить, какие варианты у меня есть, то есть какие уже существующие докер образы я могу использовать. [Kali Linux](https://www.kali.org/docs/containers/official-kalilinux-docker-images/) предоставляет официальный образ, но так как я сторонник и адепт Arch Linux, то быстро начал смотреть в сторону образа [BlackArch Linux](https://hub.docker.com/r/blackarchlinux/blackarch). Базовый образ BlackArch Linux является поддерживаемым и обновляемым образом, и именно его я и решил взять за основу. Чего в нём не хватало, так это часто используемых утилит и некоторых необходимых конфигураций, например продвинутого shell, красивого vim, но всё же основное было — это отсутствие предустановленных пакетов, которые я использую регулярно. Docker позволяет взять образ в качестве базового и построить свой на его основе, именно это я и сделал.
 
-BlackArch is not the only way to do this. [Kali also provides official Docker images](https://www.kali.org/docs/containers/official-kalilinux-docker-images/), so it does not require a desktop or a VM. Starting with one of those and adding a personal selection of tools is a valid alternative. I used the [official BlackArch image](https://github.com/BlackArch/blackarch-docker) as my base.
+Из интересных моментов Docker образа BlackArch Linux стоит отметить, что на самом деле он предоставляет два образа: один предназначен для работы из терминала, а второй в GUI-режиме через [noVNC](https://novnc.com/). Я решил взять за основу второй, чтобы иметь запускать графические приложения, а больший размер образа решил считать trade-off, так как понимал, что мой образ точно будет большим по размеру, я же собираюсь предустановить туда необходимые утилиты.
 
-## What I keep in the image
+Образ обновляется, собирается и выкладывается в Docker Hub каждый день через GitHub Actions.
 
-The [Dockerfile](https://github.com/ismd/blackarch-docker) installs the utilities I use ahead of time. It is a personal selection, rather than an attempt to install the whole BlackArch repository. Some examples are:
+# Как я использую BlackArch Docker Container
 
-- Nmap, ffuf, Gobuster, and sqlmap for network and web tasks.
-- John, Hashcat, and Hydra for password-related challenges.
-- ExifTool, Binwalk, and Stegseek for inspecting files and steganography tasks.
-- GDB, pwndbg, and strace for working with binaries.
-- Python with pwntools, Requests, and PyCryptodome for scripts.
-
-The everyday tools matter too. The image includes Zsh with Starship, fzf, ripgrep, jq, and Neovim with LazyVim. Having the security tools installed would only solve part of the problem if I then had to set up the shell and editor every time.
-
-The base is `blackarchlinux/blackarch:novnc`, which also makes a browser-accessible desktop available. My normal way of using it is still the terminal: the default command starts Zsh in `/app`.
-
-## Starting a task
-
-I keep a named container that I can return to between sessions. For example, to start working on a box:
+Запуск и работа через Docker контейнер выглядят очень просто, необходим только настроенный и запущенный Docker сервис, а запуск выглядит просто:
 
 ```bash
 mkdir -p ~/ctf/example-box
@@ -61,97 +54,41 @@ docker run -it \
   ismd/blackarch
 ```
 
-Files saved under `/app` remain in `~/ctf/example-box` on the host. That includes downloaded challenge files, scripts, and command output. They are available from either side of the mount, without copying them out of the container after the session.
+Рабочая директория биндится в контейнер в директорию `/app`, таким образом есть синхронизация файлов между основной и контейнерной системами. Список wordlist'ов держу и обновляю на основной системе, монтирую их так же через аргумент `-v`. И то же самое с `/etc/hosts`, я пришёл к тому, что стоит редактировать его только на основной системе, потому что если сделать это из гостевой, то файлы могут разойтись при сохранении, и это не починить без перезапуска контейнера.
 
-I also mount my wordlists at `/mnt/wordlists`, so I can use the same collection across tasks without copying it into each container. The example uses `~/wordlists`; replace it with an existing directory containing your wordlists. If the tools only need to read the lists, adding `:ro` to that mount prevents them from changing the originals. As written, both the task directory and wordlists are writable from inside the container.
+В основном использую только CLI инструменты, поэтому запускаю Docker контейнер в терминальном режиме. Но, как и было отмечено выше, оставляю возможность запуска в GUI-режиме в браузере через noVNC, для этого есть информация в [README](https://github.com/ismd/blackarch-docker).
 
-Mounting `/etc/hosts` gives the container the same custom hostname entries I use on the host, which is useful for lab machines with specific domain names. The `:ro` makes this mount read-only. Docker normally manages a separate hosts file for each container; this mount replaces it with mine. If an editor replaces the host file when saving, the running container may still see the old file until it is restarted.
-
-This is a persistent working environment: exiting the main shell stops the container but keeps its filesystem, including tools installed during the session. The name makes it easy to find again. To [resume the stopped container](https://docs.docker.com/reference/cli/docker/container/start/):
+Работая через Docker контейнер получаю все его преимущества, например, могу остановить контейнер, а на следующий день продолжить работу:
 
 ```bash
 docker start -ai blackarch-ctf
 ```
 
-`docker run` creates a new container, so I only use it for the initial setup. Subsequent sessions use `docker start`. Pulling a newer image does not update this existing container; using the new image means creating another container. Keeping task files in the host directory makes that transition easier.
-
-For another terminal in the same running container:
+Или же запустить ещё один shell внутри уже существующего контейнера:
 
 ```bash
 docker exec -it blackarch-ctf /bin/zsh
 ```
 
-That makes it possible to leave a command running in one terminal and investigate its output in another, using the same environment and files.
-
-## Reaching the lab through the VPN
-
-My usual setup is simple: I connect to the HTB or THM VPN on the host, then start the container. I leave Docker's network settings at their defaults. On my Linux setup, the container uses the [default bridge network](https://docs.docker.com/engine/network/drivers/bridge/), and its outbound connections reach the lab through the host's VPN connection. This relies on the host's routing and firewall allowing that traffic.
-
-When I need a reverse-shell listener, I usually run it directly on the host:
+Listener для reverse shell обычно я запускаю на основной системе:
 
 ```bash
-# On the host, outside the container
 nc -lvnp 4444
 ```
 
-The target connects to my host's VPN IP on port `4444`. Docker is not involved in that incoming connection, so there is no container port to publish.
+Тем не менее при желании можно пробрасывать порт в контейнер при создании через `-p <host-vpn-ip>:4444:4444`, например `-p 0.0.0.0:4444:4444`.
 
-If I want the listener inside the container instead, there are two alternatives to the default launch command:
+## Проблема прав доступа
 
-- Add `-p <host-vpn-ip>:4444:4444` when creating the container, replacing `<host-vpn-ip>` with the actual address. Docker then forwards that host port to port `4444` in the container, where the listener must bind to `0.0.0.0:4444`.
-- Add [`--network host`](https://docs.docker.com/engine/network/drivers/host/) instead. With a regular rootful Docker Engine on Linux, the container shares the host's network, including its VPN interface. A listener uses a host port directly, without `-p`, but the container no longer has a separate network namespace.
+Проблема, с которой я регулярно сталкиваюсь, заключается в том, что при создании файлов внутри контейнера в рабочей директории `/app` они создаются с правами доступа root в основной системе. На текущий момент эту проблему не решил, но смотрю в сторону двух возможных решений:
 
-Both are options for a newly created container, not flags to add to `docker start`. For my usual workflow, a listener on the host is enough. Whichever option is used, the host firewall must allow the incoming connection, and two listeners cannot use the same host address and port at once.
+- [Rootless Docker](https://docs.docker.com/engine/security/rootless/), он требует некоторой настройки, но тем не менее является официальным решением.
+- Rootless Podman тоже требует некоторой предварительной настройки, плюс использования Podman
 
-## The file ownership problem I ran into
+Сейчас изучаю этот вопрос, буду рад услышать советы от людей, которые уже решали подобную задачу.
 
-While solving an HTB machine, I hit a less obvious consequence of sharing a directory with the container: a file I created there belonged to root on the host.
+# Trade-offs
 
-The image starts as root. With a regular rootful Docker setup and no user namespace remapping, container UID `0` is also UID `0` on the host. Running the `docker` command from my normal user account does not change that. The process writing the file is still root.
+Главный trade-off, с которым пришлось смириться — это размер образа. По состоянию на ноябрь 2026 года образ занимает локально 16.4 Гб и требует 5.3 Gb для скачивания в сжатом виде через `docker pull`.
 
-For ordinary file processing, one option is to add `--user "$(id -u):$(id -g)"` when creating the container. On that rootful setup, files written by the process belong to my host user. But this is not a complete replacement for the usual interactive session: my shell and editor configuration live under `/root`, and changing the UID does not create a configured home directory for another user. Package installation and tools that require additional privileges also need separate handling.
-
-This experience made me look into two other options:
-
-- **Rootless Docker** runs the daemon and containers without host root privileges. Its [UID/GID mapping](https://docs.docker.com/engine/security/rootless/uid-gid-mapping/) maps root inside the container to the user running rootless Docker on the host. That directly addresses this particular ownership problem when the container writes files as root.
-- **Rootless Podman** also maps container root to the invoking host user by default. Its [`--userns=keep-id` option](https://docs.podman.io/en/latest/markdown/podman-run.1.html#userns-mode) is a different arrangement: it preserves the user's numeric UID inside the container, which brings back the need for a suitable home directory and configuration.
-
-These are options I want to explore further, rather than a migration I have already completed. File ownership is one part of the decision; the VPN and the tools I use need to work with the chosen runtime too.
-
-## When a graphical application is needed
-
-The image also supports a desktop through [noVNC](https://github.com/novnc/novnc). I mainly use CLI tools, but this mode provides a way to open graphical applications such as Burp Suite in a browser:
-
-```bash
-docker run -d \
-  --name blackarch-gui \
-  --security-opt seccomp=unconfined \
-  -p 127.0.0.1:8080:8080 \
-  -v "$PWD":/app \
-  -v "$HOME/wordlists:/mnt/wordlists" \
-  -v /etc/hosts:/etc/hosts:ro \
-  ismd/blackarch \
-  /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
-```
-
-The desktop is then available at `http://localhost:8080`. This command binds the browser endpoint to localhost and uses the seccomp setting required by the upstream noVNC image, which disables that layer of syscall filtering. The VPN setup is the same as for the CLI container.
-
-To stop the desktop session:
-
-```bash
-docker stop blackarch-gui
-```
-
-To start it again later, use `docker start blackarch-gui` and reopen the browser page.
-
-## The cost of having everything ready
-
-The image is large: approximately **15.6 GB locally** and **5.6 GB (5.2 GiB) to download** from [Docker Hub](https://hub.docker.com/r/ismd/blackarch/tags) for `linux/amd64`, as checked in October 2026. Sizes vary between builds, and cached layers reduce the download.
-
-The desktop base, development tools, and security utilities all contribute to that. I accept the disk usage in exchange for having my environment ready, but a smaller selection built directly on a base image can make more sense for someone else.
-
-The same applies to the package list. If a tool is missing for one task, it can be installed in the running container. If it becomes part of the regular workflow, it belongs in the Dockerfile. Another option is to extend this image with a small Dockerfile of your own, or use mine as a reference and start from the official BlackArch base.
-
-For my sessions, the useful change has been spending less time preparing the environment before working on a challenge. I open a terminal, have my tools available, and keep the task files in a directory on my laptop. The ownership issue is a reminder that there are still details to improve as I use it.
-
-The [source is on GitHub](https://github.com/ismd/blackarch-docker), and the image is published as [`ismd/blackarch` on Docker Hub](https://hub.docker.com/r/ismd/blackarch). If you use a similar setup, I would be interested to hear how you handle the rough edges; feedback, issues, and pull requests are welcome.
+Исходный код образа лежит в [GitHub](https://github.com/ismd/blackarch-docker), а скачать Docker образ можно из [Docker Hub'а](https://hub.docker.com/r/ismd/blackarch).
