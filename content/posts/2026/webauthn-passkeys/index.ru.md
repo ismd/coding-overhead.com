@@ -1,5 +1,5 @@
 ---
-title: "[RU] WebAuthn и Passkeys — аутентификация без паролей"
+title: "WebAuthn и Passkeys — аутентификация без паролей"
 summary: "WebAuthn убирает пароль из процесса аутентификации, заменяя его криптографией с открытым ключом"
 categories:
   - Security

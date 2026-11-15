@@ -9,21 +9,72 @@ module:
   imports:
     - path: github.com/ismd/hugo-theme-vng-blue
 
+languages:
+  en:
+    label: English
+    locale: en-US
+    weight: 1
+    params:
+      description: "Hello, friend. Coding Overhead is&nbsp;my&nbsp;personal blog about modern tech and useful tools."
+      homeToBlogText: "Blog"
+      mailMeText: "Email&nbsp;me"
+  ru:
+    label: Русский
+    locale: ru-RU
+    weight: 2
+    params:
+      description: "Привет, друг. Coding Overhead&nbsp;&mdash; мой личный блог о&nbsp;современных технологиях и&nbsp;полезных инструментах."
+      homeToBlogText: "Блог"
+      mailMeText: "Написать&nbsp;мне"
+      # Same as params.custom_script_inline, but with giscus data-lang="ru"
+      custom_script_inline: |
+        <script src="https://giscus.app/client.js"
+                data-repo="ismd/coding-overhead.com"
+                data-repo-id="R_kgDOM8wE5g"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOM8wE5s4Cu5WQ"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="preferred_color_scheme"
+                data-lang="ru"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VF99R1ZB2Z"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-VF99R1ZB2Z');
+        </script>
+
 menus:
   main:
-    - name: Home
+    - identifier: home
+      name: Home
       pageRef: /
       weight: 10
-    - name: Posts
+    - identifier: posts
+      name: Posts
       pageRef: /posts
       weight: 20
-    - name: Categories
+    - identifier: categories
+      name: Categories
       pageRef: /categories
       weight: 30
-    - name: Tags
+    - identifier: tags
+      name: Tags
       pageRef: /tags
       weight: 40
-    - name: About
+    - identifier: about
+      name: About
       pageRef: /about
       weight: 50
 
@@ -74,12 +125,10 @@ params:
 
 
   homeEventPosition: "none"
-  homeToBlogText: "Blog"
-  description: "Hello, friend. Coding Overhead is&nbsp;my&nbsp;personal blog about modern tech and useful tools."
-  mailMeText: "Email&nbsp;me"
 
 markup:
   goldmark:
+    duplicateResourceFiles: true
     renderer:
       unsafe: true
   highlight:

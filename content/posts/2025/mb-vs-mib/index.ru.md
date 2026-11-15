@@ -1,5 +1,5 @@
 ---
-title: "[RU] Мегабайты и мебибайты"
+title: "Мегабайты и мебибайты"
 summary: "Разница между мегабайтами (MB) и мебибайтами (MiB)"
 categories:
   - IT Fundamentals

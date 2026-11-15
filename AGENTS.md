@@ -4,7 +4,7 @@
 
 This is a Hugo static site generator project for a technology blog called "Coding Overhead" (coding-overhead.com). The site covers topics related to GNU/Linux, DevOps, Platform Engineering, programming, and useful utilities.
 
-The blog is written in English. Some posts are in Russian; their titles are prefixed with `[RU]`.
+The site is multilingual (Hugo multilingual mode): English is the default language at `/`, Russian is at `/ru/`. Russian posts are marked by the `.ru` file name suffix (`index.ru.md`).
 
 ## Key Commands
 
@@ -40,6 +40,9 @@ The site is configured to deploy to AWS S3 (s3://coding-overhead.com) as specifi
 ```bash
 # Create new post
 hugo new posts/YYYY/[post-name]/index.md
+
+# Create new post in Russian
+hugo new posts/YYYY/[post-name]/index.ru.md
 ```
 
 ## Site Architecture
@@ -65,7 +68,10 @@ hugo new posts/YYYY/[post-name]/index.md
   - Social media links (GitHub, LinkedIn, YouTube, Twitch)
   - Custom analytics (Yandex.Metrika)
   - Home page event positioning
-  - Site language: English (single-language site, no Hugo multilingual mode)
+  - Languages: English (`en`, default, served at `/`) and Russian (`ru`, served at `/ru/`), defined under `languages` in `hugo.yaml`
+  - Language-specific params (`description`, `homeToBlogText`, `mailMeText`, `custom_script_inline` with giscus `data-lang`) live under `languages.<lang>.params`
+  - Main menu entries are translated by their `identifier` via `i18n/<lang>.toml`
+  - `markup.goldmark.duplicateResourceFiles: true` is required: without it Hugo publishes bundle resources only with the English page, so Russian-only bundles (`index.ru.md` alone) lose `cover.png` and other files
 
 ### Key Features
 - **Categories and Tags**: Organized content taxonomy
@@ -94,9 +100,10 @@ draft: false
 ```
 
 ### Post Language
-- New posts are written in English
-- Posts in Russian stay in the same `content/posts/` tree with regular file names (`index.md`)
-- Prefix the title of every Russian post with `[RU]`, e.g. `title: "[RU] Шифрование устройств в Linux"`
+- New posts are written in English (`index.md`)
+- Posts in Russian stay in the same `content/posts/` tree, with the `.ru` suffix: `index.ru.md`. Do not prefix their titles with `[RU]`
+- A translation of a post goes into the same page bundle (`index.md` + `index.ru.md`, e.g. `posts/2026/keenetic-dns-records/`) and shares its resources (`cover.png`)
+- Site pages also have Russian versions: `content/_index.ru.md`, `content/posts/_index.ru.md`, `content/about.ru.md`. Keep them in sync with the English ones
 
 ### Summary Style
 - Write `summary` in headline style, without a trailing period (in any language)
@@ -127,7 +134,7 @@ The vng-blue theme can be customized through:
 - Resources cache in `resources/_gen/` (can be cleared if needed)
 - Theme is a Hugo module, not a git submodule; its version is pinned in `go.mod` / `go.sum`
 - No package.json or Node.js dependencies - pure Hugo project
-- Site content is in English; some posts are in Russian (marked with `[RU]` in the title)
+- Site content is in English; some posts are in Russian (`index.ru.md`, published under `/ru/`)
 - Yandex.Metrika analytics configured in hugo.yaml
 
 ## Theme Module Management

@@ -1,5 +1,5 @@
 ---
-title: "[RU] Перенаправления Unix pipelines"
+title: "Перенаправления Unix pipelines"
 summary: "Немного о конвейерах в Unix"
 categories:
   - Linux Fundamentals
