@@ -83,7 +83,7 @@ Still, if you want, you can forward a port to the container when creating it wit
 One problem I regularly run into is that files created inside the container in the `/app` working directory end up owned by root on the host. I haven't solved this yet, but I'm looking at two possible solutions:
 
 - [Rootless Docker](https://docs.docker.com/engine/security/rootless/) requires some setup, but it is an official solution.
-- Rootless Podman also requires some initial setup, plus using Podman
+- Rootless Podman also requires some initial setup, plus using Podman.
 
 I'm looking into this now and would be glad to hear advice from people who've already dealt with something similar.
 
